@@ -34,6 +34,8 @@ signal exp_b : std_logic_vector(10 downto 0) := num_2(30 downto 20);
 signal man_b : std_logic_vector(19 downto 0) := num_2(19 downto 0);
 -- o numero em si
 
+signal status : 
+
 begin
 main : process (clock,reset)
 
