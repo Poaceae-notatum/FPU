@@ -57,7 +57,14 @@ elsif (exp_b /= exp_a) then
 	end if;
 elsif( exp_b = exp_a ) then
 	if(man_a > man_b)
-	 if(
-	  man_temp = man_
+	 if(den_a = '1')
+	  man_temp = man_a - man_b;
+	 elsif(den_a = '0')
+	  man_temp = man_a + man_b;
+	if(man_b > man_a)
+	 if(den_b = '1')
+	  man_temp = man_b - man_a;
+	 elsif(den_b = '0')
+	  man_temp = man_b + man_a;
 
 end if;
