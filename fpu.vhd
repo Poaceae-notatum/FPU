@@ -98,7 +98,7 @@ case status is
 	  exp_b <= exp_b + 1;
 	   if (man_b(0) = '1') then
 	    outpstatus(0) := '1';
-	   end if;
+	   end if;----------------------------------------------------------------------
 	  man_b <= '0' & man_b(20 downto 1);
 	 elsif(exp_b > exp_a) then
 	  exp_a <= exp_a + 1;
@@ -168,9 +168,7 @@ when "100" =>
 	 data_out(30 downto 20) <= std_logic_vector(exp_temp + 1);
 	 data_out(19 downto 0) <= std_logic_vector(man_temp(20 downto 1));
 	else
-	 data_out(31) <= den_temp;
-	 data_out(30 downto 20) <= std_logic_vector(exp_temp);
-	 data_out(19 downto 0) <= std_logic_vector(man_temp(19 downto 0));
+	 data_out <= den_temp & std_logic_vector(exp_temp) & std_logic_vector(man_temp(19 downto 0));
 	end if;
   end if;
 when others =>
