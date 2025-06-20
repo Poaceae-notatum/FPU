@@ -12,6 +12,9 @@ data_out	: out STD_LOGIC_VECTOR(31 downto 0);
 status_out	: out STD_LOGIC_VECTOR(3 downto 0)
 );
 end entity;
+-- minha matricula eh 24107981-3
+-- 8 + (3 = impar) (24107981-3 = 35) % 4
+-- 8 + 3 = 11 
 -- [1 = 31] - [11 = 30 downto 20] - [20 = 19 downto 0]
 -- x = 11;
 -- y = 20;
