@@ -44,6 +44,20 @@ variable exp_temp   : signed(10 downto 0) := (others => '0');
 variable outpstatus : std_logic_vector(3 downto 0) := (others => '0');
  begin
 if ( reset = '0') then
+den_a <= '0';
+exp_a <= (others => '0');
+man_a <= (others => '0');
+
+den_b <= '0';
+exp_b <= (others => '0');
+man_b <= (others => '0');
+
+man_temp   := (others => '0');
+den_temp   := '0';
+exp_temp   := (others => '0');
+outpstatus := (others => '0');
+
+status <= "000";
 
 elsif (rising_edge(clock)) then
 case status is
@@ -60,7 +74,15 @@ case status is
 	 status <= "001";
 
 	when "001" =>
-	 if(exp_a - exp_b > 7 or exp_b - exp_b > 7) then
+	 if(exp_a - exp_b > 7) then
+		man_temp   := man_a;
+		den_temp   := den_a;
+		exp_temp   := exp_a;
+	  status <= "100";
+	 elsif (exp_b - exp_a > 7) then
+		man_temp   := man_b;
+		den_temp   := den_b;
+		exp_temp   := exp_b;
 	  status <= "100";
 	 else
 	  status <= "010";
@@ -134,7 +156,7 @@ case status is
 		end if;
 		status <= "100";
 when "100" =>
-  if(man_temp(20 downto 19) = "00") then
+  if ((man_temp(20 downto 19) = "00") and (man_temp /= 0)) then
 	exp_temp := exp_temp - 1;
 	man_temp := man_temp(19 downto 0) & '0';
   else
